@@ -43,4 +43,23 @@ describe "As a visitor, when I visit a doctor's show page" do
       expect(page).to have_content(@patient_3.name)
     end
   end
+
+  describe "And I click the 'Remove Patient' button" do
+    it "I am redirected back to the doctor's show page and the patient has been removed for the doctor's caseload" do
+      visit "/doctors/#{@dr_grey.id}"
+
+      within "#patient-#{@patient_1.id}" do
+        click_button 'Remove Patient'
+      end
+
+      expect(current_path).to eq("/doctors/#{@dr_grey.id}")
+
+      within '#patients' do
+        expect(page).to_not have_content(@patient_1.name)
+        expect(page).to have_content(@patient_2.name)
+        expect(page).to have_content(@patient_3.name)
+        expect(page).to have_content(@patient_3.name)
+      end
+    end
+  end
 end
