@@ -1,0 +1,10 @@
+<h1>All Patients</h1>
+
+<section id = 'patient-names'>
+  <h2>Patients (Oldest to Youngest):</h2>
+  <ul>
+    <% @patients.oldest_to_youngest.each do |patient| %>
+      <li><%= patient.name %></li>
+    <% end %>
+  </ul>
+</section>

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :hospitals, only: [:show]
 
   resources :doctor_patients, only: [:destroy]
+
+  resources :patients, only: [:index]
 end
